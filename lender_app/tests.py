@@ -6,6 +6,7 @@ from .views import book_detail_view, book_list_view
 
 class TestBooksModels(TestCase):
     def setUp(self):
+        user = User.objects.create_user('foo')
         Book.objects.create(title='title one', author='author one', year='2001')
         Book.objects.create(title='title two', author='author two', year='2001')
         Book.objects.create(title='title three', author='author three', year='2001')

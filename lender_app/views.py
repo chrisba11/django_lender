@@ -8,7 +8,10 @@ def book_list_view(request):
     """
     View to render the book_list.html template.
     """
-    books = get_list_or_404(Book)
+    books = get_list_or_404(
+        Book,
+        user=request.user.id,
+        )
     context = {
         'books': books,
     }
@@ -21,7 +24,11 @@ def book_detail_view(request, pk=None):
     """
     View to render the book_details.html template.
     """
-    book = get_object_or_404(Book, id=pk)
+    book = get_object_or_404(
+        Book,
+        id=pk,
+        user=request.user.id
+        )
     context = {
         'book': book,
     }
