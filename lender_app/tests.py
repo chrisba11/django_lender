@@ -6,7 +6,10 @@ from .views import book_detail_view, book_list_view
 
 class TestBooksModels(TestCase):
     def setUp(self):
-        user = User.objects.create_user('foo')
+        user = User.objects.create_user(
+            'testy',
+            'mctesterson'
+            )
         Book.objects.create(title='title one', author='author one', year='2001')
         Book.objects.create(title='title two', author='author two', year='2001')
         Book.objects.create(title='title three', author='author three', year='2001')
@@ -27,6 +30,10 @@ class TestBooksModels(TestCase):
 class TestNotesViews(TestCase):
     def setUp(self):
         self.request = RequestFactory()
+        self.user = User.objects.create_user(
+            'testy',
+            'mctesterson'
+        )
 
         Book.objects.create(title='title one', author='author one', year='2001')
         Book.objects.create(title='title two', author='author two', year='2001')
@@ -34,25 +41,30 @@ class TestNotesViews(TestCase):
 
     def test_book_detail_view_context(self):
         request = self.request.get('')
+        request.user = self.user
         response = book_detail_view(request, f'{ Book.objects.get(title="title one").id }')
         self.assertIn(b'author one', response.content)
 
     def test_book_list_view_context(self):
         request = self.request.get('')
+        request.user = self.user
         response = book_list_view(request)
         self.assertIn(b'title two', response.content)
 
     def test_book_detail_view_status_code_success(self):
         request = self.request.get('')
+        request.user = self.user
         response = book_detail_view(request, f'{ Book.objects.get(title="title one").id }')
         self.assertEqual(response.status_code, 200)
 
     def test_book_list_view_status_code_success(self):
         request = self.request.get('')
+        request.user = self.user
         response = book_list_view(request)
         self.assertEqual(response.status_code, 200)
 
     def test_book_detail_view_status_code_failure(self):
         request = self.request.get('')
+        request.user = self.user
         with self.assertRaises(Http404):
             book_detail_view(request, '0')
