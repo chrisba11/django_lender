@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_registration',
     'django_lender',
     'lender_app',
 ]
@@ -82,7 +83,7 @@ DATABASES = {
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': os.environ.get('DB_HOST'),
-        'PORT': 5432,
+        'PORT': os.environ.get('PORT'),
         'TEST': {
             'NAME': 'django_lender_test'
         }
