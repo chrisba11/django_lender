@@ -11,9 +11,24 @@ class TestBooksModels(TestCase):
             'testy',
             'mctesterson'
             )
-        Book.objects.create(title='title one', author='author one', year='2001')
-        Book.objects.create(title='title two', author='author two', year='2001')
-        Book.objects.create(title='title three', author='author three', year='2001')
+        Book.objects.create(
+            title='title one',
+            author='author one',
+            year='2001',
+            user=user
+            )
+        Book.objects.create(
+            title='title two',
+            author='author two',
+            year='2001',
+            user=user
+            )
+        Book.objects.create(
+            title='title three',
+            author='author three',
+            year='2001',
+            user=user
+            )
 
     def test_book_titles(self):
         one = Book.objects.get(title='title one')
@@ -36,9 +51,24 @@ class TestNotesViews(TestCase):
             'mctesterson'
         )
 
-        Book.objects.create(title='title one', author='author one', year='2001')
-        Book.objects.create(title='title two', author='author two', year='2001')
-        Book.objects.create(title='title three', author='author three', year='2001')
+        Book.objects.create(
+            title='title one',
+            author='author one',
+            year='2001',
+            user=self.user
+            )
+        Book.objects.create(
+            title='title two',
+            author='author two',
+            year='2001',
+            user=self.user
+            )
+        Book.objects.create(
+            title='title three',
+            author='author three',
+            year='2001',
+            user=self.user
+            )
 
     def test_book_detail_view_context(self):
         request = self.request.get('')

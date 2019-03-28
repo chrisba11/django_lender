@@ -16,7 +16,8 @@ class Book(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='books'
+        related_name='books',
+        default=1
         )
     title = models.CharField(max_length=48)
     author = models.CharField(max_length=48)
