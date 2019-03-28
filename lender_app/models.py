@@ -4,7 +4,7 @@ from django.utils.timezone import now
 
 class Book(models.Model):
     """
-
+    Database model to create instances of books.
     """
     STATES = [
         ('in', 'Checked-In'),
