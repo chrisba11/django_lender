@@ -13,12 +13,24 @@ class Book(models.Model):
         ('out', 'Checked-Out'),
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='books')
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='books',
+        default=1
+        )
     title = models.CharField(max_length=48)
     author = models.CharField(max_length=48)
-    description = models.CharField(max_length=4096)
+    description = models.CharField(
+        max_length=4096,
+        default='No Description Provided'
+        )
     year = models.IntegerField(default=0000)
-    status = models.CharField(choices=STATES, default='in', max_length=48)
+    status = models.CharField(
+        choices=STATES,
+        default='in',
+        max_length=48
+        )
     date_added = models.DateTimeField(default=now)
     last_borrowed = models.DateTimeField(auto_now=True)
 
