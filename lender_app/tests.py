@@ -2,6 +2,7 @@ from django.test import TestCase, RequestFactory
 from django.http import Http404
 from .models import Book
 from .views import book_detail_view, book_list_view
+from django.contrib.auth.models import User
 
 
 class TestBooksModels(TestCase):
