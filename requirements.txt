@@ -1,4 +1,6 @@
+confusable-homoglyphs==3.2.0
 Django==2.1.7
+django-registration==3.0
 entrypoints==0.3
 flake8==3.7.7
 mccabe==0.6.1
