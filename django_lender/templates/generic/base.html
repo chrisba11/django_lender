@@ -5,32 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png" href="{% static "assets/old-books-436498_1280.png" %}">
-    <link rel="stylesheet" href="{% static "css/normalize.css" %}">
-    <link rel="stylesheet" href="{% static "css/skeleton.css" %}">
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="icon" type="image/png" href="{% static 'assets/old-books-436498_1280.png' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{% block title %}Need Title{% endblock title %}</title>
   </head>
   <body>
     <header>
       <nav>
         <ul>
-          <li><img id="nav-img" src="{% static 'assets/old-books-436498_1280.png' alt='image of old books'"></li>
-          <li><a href="{% url "home" %}">Home</a></li>
+          <li><img id="nav-img" src="{% static 'assets/old-books-436498_1280.png' alt='image of old books' %}"></li>
+          <li><a href="{% url 'home' %}">Home</a></li>
           {% if user.is_authenticated %}
-            <li><a href="{% url "book_list" %}">Books</a></li>
+            <li><a href="{% url 'book_list' %}">Books</a></li>
           {% if user.is_superuser %}
-            <li><a href="{% url "admin:index" %}">Admin</a></li>
+            <li><a href="{% url 'admin:index' %}">Admin</a></li>
           {% endif %}
-            <li><a href="{% url "logout" %}">Logout</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
           {% else %}
-            <li><a href="{% url "django_registration_register" %}">Login</a></li>
-            <li><a href="{% url "login" %}">Signin</a></li>
+            <li><a href="{% url 'django_registration_register' %}">Register</a></li>
+            <li><a href="{% url 'login' %}">Log-In</a></li>
           {% endif %}
         </ul>
       </nav>
       {% if user.is_authenticated %}
-        <h3>Welcome to the site, {{ user.username }}</h3>
+        <h2>Welcome to the site, {{ user.username }}.</h2>
       {% endif %}
     </header>
     <main>

@@ -1,12 +1,50 @@
-.main_nav a {
+@import url('https://fonts.googleapis.com/css?family=Maven+Pro');
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+
+body {
+    background-image: url("../assets/wood2.jpg");
+    font-family: 'Maven Pro';
+    color: white;
+}
+
+input {
+    color: black;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+a {
+    color: white;
     text-decoration: none;
 }
 
-.main_nav li {
+nav a {
+    font-size: 24px;
+}
+
+nav li {
     display: inline-block;
+    font-family: 'Cinzel';
+    font-weight: bold;
+    height: 100px;
+    line-height: 100px;
+    vertical-align: middle;
+    margin-right: 20px;
 }
 
 #nav-img {
-    width: 50px;
+    width: 100px;
+}
+
+body {
+    margin: 20px;
+}
+
+.book_detail, h4 {
+    background-color: rgb(54, 54, 54);
+    border-radius: 15px;
+    padding: 15px;
 }
 
