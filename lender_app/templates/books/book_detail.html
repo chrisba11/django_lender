@@ -1,13 +1,17 @@
 {% extends "generic/base.html" %}
+{% load tz %}
+{% load template_extras %}
 
 {% block title %}Book Detail{% endblock title %}
 
 {% block content %}
   <div class="book_detail">
-    <h3>{{ book.title }} ({{ book.status }})</h3>
-    <p>{{ book.author }}</p>
-    <p>{{ book.year }}</p>
-    <p>{{ book.date_added }}</p>
-    <p>{{ book.last_borrowed }}</p>
+    <h4>{{ book.title }} ({{ book.status }})</h4>
+    <p>Author: {{ book.author }}</p>
+    <p>Publication Date: {{ book.year }}</p>
+    <p>Date Added to Collection: {{ book.date_added | get_date_string }}</p>
+    {% if book.status == 'out' %}
+      <p>Date Borrowed: {{ book.last_borrowed | get_date_string }}</p>
+    {% endif %}
   </div>
 {% endblock content %}
